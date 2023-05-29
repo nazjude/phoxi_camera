@@ -100,58 +100,58 @@ add_definitions(-DPHOXI_API_VERSION_MAJOR=${PHO_SOFTWARE_VERSION_MAJOR})
 add_definitions(-DPHOXI_API_VERSION_MINOR=${PHO_SOFTWARE_VERSION_MINOR})
 add_definitions(-DPHOXI_API_VERSION_PATCH=${PHO_SOFTWARE_VERSION_PATCH})
 
-add_library(
-  ${PROJECT_NAME}_PhoXi_Interface
-  src/PhoXiInterface.cpp
-)
+# add_library(
+#   ${PROJECT_NAME}_PhoXi_Interface
+#   src/PhoXiInterface.cpp
+# )
 
-add_library(
-  ${PROJECT_NAME}_Ros_Interface
-  src/RosInterface.cpp
-)
+# add_library(
+#   ${PROJECT_NAME}_Ros_Interface
+#   src/RosInterface.cpp
+# )
 
-add_executable(
-  ${PROJECT_NAME}
-  src/phoxi_camera_node.cpp
-)
+# add_executable(
+#   ${PROJECT_NAME}
+#   src/phoxi_camera_node.cpp
+# )
 
-add_dependencies(
-  ${PROJECT_NAME}_Ros_Interface
-  ${PROJECT_NAME}_PhoXi_Interface
-  ${PROJECT_NAME}_gencfg
-  ${${PROJECT_NAME}_EXPORTED_TARGETS}
-  ${catkin_EXPORTED_TARGETS}
-)
+# add_dependencies(
+#   ${PROJECT_NAME}_Ros_Interface
+#   ${PROJECT_NAME}_PhoXi_Interface
+#   ${PROJECT_NAME}_gencfg
+#   ${${PROJECT_NAME}_EXPORTED_TARGETS}
+#   ${catkin_EXPORTED_TARGETS}
+# )
 
-add_dependencies(
-  ${PROJECT_NAME}
-  ${${PROJECT_NAME}_EXPORTED_TARGETS}
-  ${catkin_EXPORTED_TARGETS}
-  ${PROJECT_NAME}_Ros_Interface
-)
+# add_dependencies(
+#   ${PROJECT_NAME}
+#   ${${PROJECT_NAME}_EXPORTED_TARGETS}
+#   ${catkin_EXPORTED_TARGETS}
+#   ${PROJECT_NAME}_Ros_Interface
+# )
 
-target_link_libraries(
-  ${PROJECT_NAME}_PhoXi_Interface
-  ${PHOXI_LIBRARY}
-  rt
-  pthread
-)
-target_link_libraries(
-  ${PROJECT_NAME}_Ros_Interface
-  ${PROJECT_NAME}_PhoXi_Interface
-  ${catkin_LIBRARIES}
-)
+# target_link_libraries(
+#   ${PROJECT_NAME}_PhoXi_Interface
+#   ${PHOXI_LIBRARY}
+#   rt
+#   pthread
+# )
+# target_link_libraries(
+#   ${PROJECT_NAME}_Ros_Interface
+#   ${PROJECT_NAME}_PhoXi_Interface
+#   ${catkin_LIBRARIES}
+# )
 
-target_link_libraries( ${PROJECT_NAME}
-    PRIVATE
-        ${catkin_LIBRARIES}
-        ${PROJECT_NAME}_Ros_Interface
-)
+# target_link_libraries( ${PROJECT_NAME}
+#     PRIVATE
+#         ${catkin_LIBRARIES}
+#         ${PROJECT_NAME}_Ros_Interface
+# )
 
-install(TARGETS ${PROJECT_NAME}_Ros_Interface ${PROJECT_NAME}_PhoXi_Interface
-        ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-        LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-        RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION})
+# install(TARGETS ${PROJECT_NAME}_Ros_Interface ${PROJECT_NAME}_PhoXi_Interface
+#         ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#         LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+#         RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION})
 
 
 install(DIRECTORY include/${PROJECT_NAME}/
